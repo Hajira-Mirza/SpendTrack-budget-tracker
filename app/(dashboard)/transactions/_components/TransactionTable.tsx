@@ -46,6 +46,7 @@ interface Props {
   to: Date;
 }
 
+
 const emptyData: any[] = [];
 
 type TransactionHistoryRow = GetTransactionHistoryResponseType[0];
@@ -145,6 +146,7 @@ function TransactionTable({ from, to }: Props) {
         )}&to=${DateToUTCDate(to)}`
       ).then((res) => res.json()),
   });
+
 
   const handleExportCsv = (data: any[]) => {
     const csv = generateCsv(csvConfig)(data);

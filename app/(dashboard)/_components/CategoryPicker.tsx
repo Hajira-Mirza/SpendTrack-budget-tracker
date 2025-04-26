@@ -17,7 +17,7 @@ import {
 import { TransactionType } from "@/lib/types";
 import { Category } from "@prisma/client";
 import { useQuery } from "@tanstack/react-query";
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import CreateCategoryDialog from "./CreateCategoryDialog";
 import { Check, ChevronsUpDown } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -28,7 +28,7 @@ interface Props {
 }
 
 const CategoryPicker = ({ type, onChange }: Props) => {
-  let [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const [value, setValue] = React.useState("");
 
   useEffect(() => {
@@ -93,7 +93,7 @@ const CategoryPicker = ({ type, onChange }: Props) => {
                     key={category.name}
                     onSelect={() => {
                       setValue(category.name);
-                      setOpen = (prev) => !prev;
+                      setOpen((prev) => !prev);
                     }}
                   >
                     <CategoryRow category={category} />

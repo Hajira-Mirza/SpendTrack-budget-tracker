@@ -157,6 +157,7 @@ function CreateTransactionDialog({ trigger, type }: Props) {
               <FormField
                 control={form.control}
                 name="category"
+
                 render={({ field }) => (
                   <FormItem className="flex flex-col">
                     <FormLabel>Category</FormLabel>
