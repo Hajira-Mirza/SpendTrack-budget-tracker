@@ -58,7 +58,7 @@ function History({ userSettings }: { userSettings: UserSettings }) {
             <div className="flex justify-center h-10 gap-2">
               <Badge
                 variant="outline"
-                className="flex items-center gap-1 md:gap-2 w-22 md:24 text-xs md:text-sm"
+                className="flex items-center gap-1 md:gap-2 w-12 sm:w-14 md:w-24 text-xs md:text-sm justify-center"
               >
                 <div className="h-2 w-2 rounded-full bg-emerald-500" />
                 <span>
@@ -70,7 +70,7 @@ function History({ userSettings }: { userSettings: UserSettings }) {
 
               <Badge
                 variant="outline"
-                className="flex items-center gap-1 md:gap-2 w-22 md:24 text-xs md:text-sm"
+                className="flex items-center gap-1 md:gap-2 w-12 sm:w-14 md:w-24 text-xs md:text-sm justify-center"
               >
                 <div className="h-2 w-2 rounded-full bg-rose-500" />
                 <span>
