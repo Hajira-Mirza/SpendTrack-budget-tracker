@@ -1,61 +1,65 @@
-@import "tailwindcss";
-
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 @layer base {
   :root {
-    /* Light Mode Colors */
-    --background: 45 80% 90%; /* #fbf1d6 */
-    --foreground: 231 58% 14%; /* #10153a */
+    /* Light Mode */
+    --background: 43 73% 91%;              /* #fbf1d6 */
+    --foreground: 230 55% 15%;             /* #10153a */
 
-    --card: 231 58% 14%; /* #10153a */
-    --card-foreground: 45 80% 90%; /* #fbf1d6 */
+    --card: 230 55% 40%;                   /* #2b3da1 */
+    --card-foreground: 43 73% 91%;         /* #fbf1d6 */
 
-    --popover: 231 58% 14%;
-    --popover-foreground: 45 80% 90%;
+    --popover: 230 55% 40%;
+    --popover-foreground: 43 73% 91%;
 
-    --primary: 231 58% 14%;
-    --primary-foreground: 45 80% 90%;
-    --secondary: 231 58% 20%;
-    --secondary-foreground: 45 80% 90%;
-    --muted: 231 58% 20%;
-    --muted-foreground: 45 80% 90%;
-    --accent: 231 58% 20%;
-    --accent-foreground: 45 80% 90%;
-    --destructive: 0 70% 50%;
-    --destructive-foreground: 45 80% 90%;
-    --border: 231 58% 30%;
-    --input: 231 58% 30%;
-    --ring: 231 58% 40%;
+    --primary: 14 98% 54%;                 /* #fa3b01 */
+    --primary-foreground: 43 73% 91%;      /* #fbf1d6 */
+
+    --secondary: 230 55% 40%;              /* #2b3da1 */
+    --secondary-foreground: 43 73% 91%;
+
+    --muted: 43 73% 85%;
+    --muted-foreground: 230 55% 20%;
+
+    --accent: 230 40% 85%;
+    --accent-foreground: 230 55% 15%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 43 73% 91%;
+
+    --border: 230 40% 80%;
+    --input: 230 40% 80%;
+    --ring: 230 55% 40%;
     --radius: 0.5rem;
   }
 
   .dark {
-    /* Dark Mode Colors */
-    --background: 231 58% 14%; /* #10153a */
-    --foreground: 45 80% 90%; /* #fbf1d6 */
+    /* Dark Mode */
+    --background: 230 55% 15%;             /* #10153a */
+    --foreground: 43 73% 91%;              /* #fbf1d6 */
 
-    --card: 16 99% 49%; /* #fa3b01 */
-    --card-foreground: 231 58% 14%; /* #10153a */
+    --card: 230 55% 40%;                   /* #2b3da1 */
+    --card-foreground: 43 73% 91%;         /* #fbf1d6 */
 
-    --popover: 16 99% 49%; /* #fa3b01 */
-    --popover-foreground: 231 58% 14%;
+    --popover: 230 55% 40%;
+    --popover-foreground: 43 73% 91%;
 
-    --primary: 45 80% 90%;
-    --primary-foreground: 231 58% 14%;
-    --secondary: 231 58% 20%;
-    --secondary-foreground: 45 80% 90%;
-    --muted: 231 58% 20%;
-    --muted-foreground: 45 80% 90%;
-    --accent: 231 58% 20%;
-    --accent-foreground: 45 80% 90%;
-    --destructive: 0 70% 50%;
-    --destructive-foreground: 45 80% 90%;
-    --border: 231 58% 30%;
-    --input: 231 58% 30%;
-    --ring: 45 80% 90%;
+    --primary: 14 98% 54%;                 /* #fa3b01 */
+    --primary-foreground: 43 73% 91%;
+
+    --secondary: 230 55% 40%;              /* #2b3da1 */
+    --secondary-foreground: 43 73% 91%;
+
+    --muted: 230 40% 30%;
+    --muted-foreground: 43 73% 91%;
+
+    --accent: 230 40% 30%;
+    --accent-foreground: 43 73% 91%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 43 73% 91%;
+
+    --border: 230 40% 35%;
+    --input: 230 40% 35%;
+    --ring: 230 55% 40%;
     --radius: 0.5rem;
   }
 
@@ -68,6 +72,7 @@ body {
     color: hsl(var(--foreground));
   }
 
+  /* Cards & Popups */
   .popover,
   .dialog,
   .modal,
