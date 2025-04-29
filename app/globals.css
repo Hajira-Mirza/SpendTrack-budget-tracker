@@ -34,7 +34,7 @@ body {
 
   .dark {
     /* Dark Mode Colors */
-    --background: 222.2 47.4% 6%; /* Very dark blue background */
+    --background: 221 20% 46%; /* Very dark blue background */
     --foreground: 210 40% 98%; /* Light text */
 
     --card: 222.2 47.4% 12%; /* Slightly lighter dark for cards/popups */
@@ -70,18 +70,18 @@ body {
   }
 
   /* Solid popups, cards, dialogs */
-  .popover, 
-  .dialog, 
-  .modal, 
-  [role="dialog"], 
-  [role="alertdialog"], 
-  [data-popover], 
+  .popover,
+  .dialog,
+  .modal,
+  [role="dialog"],
+  [role="alertdialog"],
+  [data-popover],
   [data-state="open"],
   .card {
     background-color: hsl(var(--card));
     color: hsl(var(--card-foreground));
     border-radius: var(--radius);
     border: 1px solid hsl(var(--border));
-    box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
   }
 }
