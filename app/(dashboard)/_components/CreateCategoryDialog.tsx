@@ -48,6 +48,7 @@ interface Props {
   successCallback: (category: Category) => void;
   trigger?: React.ReactNode;
 }
+
 function CreateCategoryDialog({ type, successCallback, trigger }: Props) {
   const [open, setOpen] = useState(false);
   const form = useForm<CreateCategorySchemaType>({
@@ -75,7 +76,6 @@ function CreateCategoryDialog({ type, successCallback, trigger }: Props) {
       await queryClient.invalidateQueries({
         queryKey: ["categories"],
       });
-      setOpen((prev) => !prev);
     },
     onError: () => {
       toast.error("Something went wrong", {
@@ -83,6 +83,7 @@ function CreateCategoryDialog({ type, successCallback, trigger }: Props) {
       });
     },
   });
+
   const onSubmit = useCallback(
     (values: CreateCategorySchemaType) => {
       toast.loading("Creating category...", {
@@ -122,9 +123,9 @@ function CreateCategoryDialog({ type, successCallback, trigger }: Props) {
             </span>
             category
           </DialogTitle>
-          <DialogDescription>
+          <DialogDescription id="create-category-dialog-description">
             Categories are used to group your transactions for better
-            organization and tracking.
+            organization
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
@@ -136,11 +137,7 @@ function CreateCategoryDialog({ type, successCallback, trigger }: Props) {
                 <FormItem>
                   <FormLabel>Name</FormLabel>
                   <FormControl>
-                    <Input
-                      defaultValue={""}
-                      placeholder="Category name"
-                      {...field}
-                    />
+                    <Input placeholder="Category name" {...field} />
                   </FormControl>
                   <FormDescription>e.g. Food, Transport</FormDescription>
                 </FormItem>
@@ -179,10 +176,18 @@ function CreateCategoryDialog({ type, successCallback, trigger }: Props) {
                           )}
                         </Button>
                       </PopoverTrigger>
-                      <PopoverContent className="w-full">
+                      <PopoverContent
+                        className="w-full mt-2"
+                        style={{ height: "250px" }}
+                      >
                         <Picker
                           data={data}
                           theme={theme.resolvedTheme}
+                          navPosition={"bottom"}
+                          maxFrequentRows={4}
+                          perLine={8}
+                          previewPosition={"top"}
+                          searchPosition={"static"}
                           onEmojiSelect={(emoji: { native: string }) => {
                             field.onChange(emoji.native);
                           }}
@@ -191,7 +196,7 @@ function CreateCategoryDialog({ type, successCallback, trigger }: Props) {
                     </Popover>
                   </FormControl>
                   <FormDescription>
-                    This is how your category will be displayed in the app.
+                    This is how your category will be displayed in the app
                   </FormDescription>
                 </FormItem>
               )}

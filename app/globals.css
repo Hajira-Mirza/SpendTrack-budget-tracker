@@ -2,95 +2,71 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 @layer base {
   :root {
-    /* Light Mode */
-    --background: 43 73% 91%;              /* #fbf1d6 */
-    --foreground: 230 55% 15%;             /* #10153a */
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
 
-    --card: 230 55% 40%;                   /* #2b3da1 */
-    --card-foreground: 43 73% 91%;         /* #fbf1d6 */
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
 
-    --popover: 230 55% 40%;
-    --popover-foreground: 43 73% 91%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
 
-    --primary: 14 98% 54%;                 /* #fa3b01 */
-    --primary-foreground: 43 73% 91%;      /* #fbf1d6 */
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 230 55% 40%;              /* #2b3da1 */
-    --secondary-foreground: 43 73% 91%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
 
-    --muted: 43 73% 85%;
-    --muted-foreground: 230 55% 20%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
 
-    --accent: 230 40% 85%;
-    --accent-foreground: 230 55% 15%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 43 73% 91%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 230 40% 80%;
-    --input: 230 40% 80%;
-    --ring: 230 55% 40%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%;
+
     --radius: 0.5rem;
   }
 
   .dark {
-    /* Dark Mode */
-    --background: 230 55% 15%;             /* #10153a */
-    --foreground: 43 73% 91%;              /* #fbf1d6 */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 98%;
 
-    --card: 230 55% 40%;                   /* #2b3da1 */
-    --card-foreground: 43 73% 91%;         /* #fbf1d6 */
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 230 55% 40%;
-    --popover-foreground: 43 73% 91%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 14 98% 54%;                 /* #fa3b01 */
-    --primary-foreground: 43 73% 91%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
 
-    --secondary: 230 55% 40%;              /* #2b3da1 */
-    --secondary-foreground: 43 73% 91%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 230 40% 30%;
-    --muted-foreground: 43 73% 91%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
 
-    --accent: 230 40% 30%;
-    --accent-foreground: 43 73% 91%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 43 73% 91%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 230 40% 35%;
-    --input: 230 40% 35%;
-    --ring: 230 55% 40%;
-    --radius: 0.5rem;
-  }
-
-  * {
-    border-color: hsl(var(--border));
-  }
-
-  body {
-    background-color: hsl(var(--background));
-    color: hsl(var(--foreground));
-  }
-
-  /* Cards & Popups */
-  .popover,
-  .dialog,
-  .modal,
-  [role="dialog"],
-  [role="alertdialog"],
-  [data-popover],
-  [data-state="open"],
-  .card {
-    background-color: hsl(var(--card));
-    color: hsl(var(--card-foreground));
-    border-radius: var(--radius);
-    border: 1px solid hsl(var(--border));
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
   }
 }

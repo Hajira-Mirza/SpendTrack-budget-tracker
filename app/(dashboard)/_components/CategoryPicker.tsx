@@ -19,7 +19,7 @@ import { Category } from "@prisma/client";
 import { useQuery } from "@tanstack/react-query";
 import React, { useCallback, useEffect, useState } from "react";
 import CreateCategoryDialog from "./CreateCategoryDialog";
-import { Check, ChevronsUpDown } from "lucide-react";
+import { Check, ChevronsUpDown, PlusSquare } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Props {
@@ -72,11 +72,7 @@ const CategoryPicker = ({ type, onChange }: Props) => {
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">
-        <Command
-          onSubmit={(e) => {
-            e.preventDefault();
-          }}
-        >
+        <Command onSubmit={(e) => e.preventDefault()}>
           <CommandInput placeholder="Search a category..." />
           <CreateCategoryDialog type={type} successCallback={successCallback} />
           <CommandEmpty>
@@ -114,7 +110,6 @@ const CategoryPicker = ({ type, onChange }: Props) => {
 };
 
 export default CategoryPicker;
-
 function CategoryRow({ category }: { category: Category }) {
   return (
     <div className="flex items-center gap-2">

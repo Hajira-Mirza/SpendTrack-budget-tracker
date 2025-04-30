@@ -8,29 +8,48 @@ import { format } from "date-fns";
 import { CalendarIcon, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 
-import { CreateTransactionSchema, CreateTransactionSchemaType } from "@/schema/transactions";
+import {
+  CreateTransactionSchema,
+  CreateTransactionSchemaType,
+} from "@/schema/transactions";
 import { TransactionType } from "@/lib/types";
 import { DateToUTCDate } from "@/lib/helpers";
 import { cn } from "@/lib/utils";
 
 import { CreateTransaction } from "../_actions/transactions";
-import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+  DialogClose,
+} from "@/components/ui/dialog";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
-import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+} from "@/components/ui/popover";
 import CategoryPicker from "./CategoryPicker";
 
 interface Props {
   trigger: ReactNode;
   type: TransactionType;
 }
-
 function CreateTransactionDialog({ trigger, type }: Props) {
-  const [open, setOpen] = useState(false);
-  const queryClient = useQueryClient();
-
   const form = useForm<CreateTransactionSchemaType>({
     resolver: zodResolver(CreateTransactionSchema),
     defaultValues: {
@@ -39,36 +58,49 @@ function CreateTransactionDialog({ trigger, type }: Props) {
     },
   });
 
+  const handleChange = useCallback(
+    (value: string) => {
+      form.setValue("category", value);
+    },
+    [form]
+  );
+  const [open, setOpen] = useState(false);
+  const queryClient = useQueryClient();
   const { mutate, isPending } = useMutation({
     mutationFn: CreateTransaction,
     onSuccess: () => {
-      toast.success("Transaction created successfully ✅", { id: "create-transaction" });
+      toast.success("Transaction created successfully ✅", {
+        id: "create-transaction",
+      });
       form.reset({
         type,
         description: "",
         amount: 0,
         date: new Date(),
-        category: undefined,
+        category: "",
       });
-      queryClient.invalidateQueries({ queryKey: ["overview"] });
-      setOpen(false);
+      queryClient.invalidateQueries({
+        queryKey: ["overview"],
+      });
+      setOpen((prev) => !prev);
     },
     onError: () => {
-      toast.error("Failed to create transaction ❌", { id: "create-transaction" });
+      toast.error("Failed to create transaction ❌", {
+        id: "create-transaction",
+      });
     },
   });
 
-  const handleCategoryChange = useCallback((value: string) => {
-    form.setValue("category", value);
-  }, [form]);
-
-  const onSubmit = useCallback((values: CreateTransactionSchemaType) => {
-    toast.loading("Creating transaction...", { id: "create-transaction" });
-    mutate({
-      ...values,
-      date: DateToUTCDate(values.date),
-    });
-  }, [mutate]);
+  const onSubmit = useCallback(
+    (values: CreateTransactionSchemaType) => {
+      toast.loading("Creating transaction...", { id: "create-transaction" });
+      mutate({
+        ...values,
+        date: DateToUTCDate(values.date),
+      });
+    },
+    [mutate]
+  );
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -77,7 +109,12 @@ function CreateTransactionDialog({ trigger, type }: Props) {
         <DialogHeader>
           <DialogTitle>
             Create a new
-            <span className={cn("m-1", type === "income" ? "text-emerald-500" : "text-rose-500")}>
+            <span
+              className={cn(
+                "m-1",
+                type === "income" ? "text-emerald-500" : "text-rose-500"
+              )}
+            >
               {type}
             </span>
             transaction
@@ -93,10 +130,15 @@ function CreateTransactionDialog({ trigger, type }: Props) {
                 <FormItem>
                   <FormLabel>Description</FormLabel>
                   <FormControl>
-                    <Input placeholder="Transaction description (optional)" {...field} />
+                    <Input
+                      placeholder="Transaction description (optional)"
+                      {...field}
+                    />
                   </FormControl>
                   <FormDescription>
-                    {type === "income" ? "e.g. Salary, Bonus, Freelance" : "e.g. Groceries, Rent, Fuel"}
+                    {type === "income"
+                      ? "e.g. Salary, Bonus, Freelance"
+                      : "e.g. Groceries, Rent, Fuel"}
                   </FormDescription>
                 </FormItem>
               )}
@@ -109,9 +151,15 @@ function CreateTransactionDialog({ trigger, type }: Props) {
                 <FormItem>
                   <FormLabel>Amount</FormLabel>
                   <FormControl>
-                    <Input type="number" {...field} />
+                    <Input
+                      type="number"
+                      value={field.value}
+                      onChange={(e) => field.onChange(Number(e.target.value))}
+                    />
                   </FormControl>
-                  <FormDescription>Enter the amount for the transaction</FormDescription>
+                  <FormDescription>
+                    Enter the amount for the transaction
+                  </FormDescription>
                 </FormItem>
               )}
             />
@@ -124,9 +172,11 @@ function CreateTransactionDialog({ trigger, type }: Props) {
                   <FormItem className="flex flex-col">
                     <FormLabel>Category</FormLabel>
                     <FormControl>
-                      <CategoryPicker type={type} onChange={handleCategoryChange} />
+                      <CategoryPicker type={type} onChange={handleChange} />
                     </FormControl>
-                    <FormDescription>Select a category for the transaction</FormDescription>
+                    <FormDescription>
+                      Select a category for the transaction
+                    </FormDescription>
                   </FormItem>
                 )}
               />
@@ -147,55 +197,56 @@ function CreateTransactionDialog({ trigger, type }: Props) {
                               !field.value && "text-muted-foreground"
                             )}
                           >
-                            {field.value ? format(field.value, "PPP") : <span>Pick a date</span>}
+                            {field.value ? (
+                              format(field.value, "PPP")
+                            ) : (
+                              <span>Pick a date</span>
+                            )}
                             <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                           </Button>
                         </FormControl>
                       </PopoverTrigger>
-                      <PopoverContent className="w-auto p-0">
+                      <PopoverContent className="w-auto p-0" align="start">
                         <Calendar
                           mode="single"
                           selected={field.value}
-                          onSelect={(value) => value && field.onChange(value)}
+                          onSelect={(value) => {
+                            if (!value) return;
+                            field.onChange(value);
+                          }}
                           initialFocus
                         />
                       </PopoverContent>
                     </Popover>
-                    <FormDescription>Select a date for the transaction</FormDescription>
+                    <FormDescription>
+                      Select a date for the transaction
+                    </FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
               />
             </div>
-
-            <div className="flex gap-2 pt-4">
-              <Button
-                type="button"
-                variant="secondary"
-                className="w-full"
-                onClick={() => {
-                  form.reset({
-                    type,
-                    description: "",
-                    amount: 0,
-                    date: new Date(),
-                    category: undefined,
-                  });
-                  setOpen(false);
-                }}
-              >
-                Cancel
-              </Button>
-
-              <Button type="submit" className="w-full" disabled={isPending}>
-                {!isPending ? "Create" : <Loader2 className="animate-spin" />}
-              </Button>
-            </div>
           </form>
         </Form>
+        <DialogFooter>
+          <DialogClose asChild>
+            <Button
+              type="button"
+              variant={"secondary"}
+              onClick={() => {
+                form.reset();
+              }}
+            >
+              Cancel
+            </Button>
+          </DialogClose>
+          <Button onClick={form.handleSubmit(onSubmit)} disabled={isPending}>
+            {!isPending && "Create"}
+            {isPending && <Loader2 className="animate-spin" />}
+          </Button>
+        </DialogFooter>
       </DialogContent>
     </Dialog>
   );
 }
-
 export default CreateTransactionDialog;
