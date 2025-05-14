@@ -1,8 +1,13 @@
-
 import { CurrencyComboBox } from "@/components/CurrencyComboBox";
 import Logo from "@/components/Logo";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/Card";
 import { Separator } from "@/components/ui/separator";
 import { currentUser } from "@clerk/nextjs/server";
 import Link from "next/link";
@@ -29,13 +34,15 @@ async function page() {
       </div>
       <Separator />
       <Card className="w-full">
-      <CardHeader>
-        <CardTitle>Currency</CardTitle>
-        <CardDescription>Set your default currency for transactions</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <CurrencyComboBox />
-      </CardContent>
+        <CardHeader>
+          <CardTitle>Currency</CardTitle>
+          <CardDescription>
+            Set your default currency for transactions
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <CurrencyComboBox />
+        </CardContent>
       </Card>
       <Separator />
       <Button className="w-full" asChild>

@@ -1,7 +1,7 @@
 "use client";
 
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
 import { GetFormatterForCurrency } from "@/lib/helpers";
 import { Period, Timeframe } from "@/lib/types";
 import { UserSettings } from "@prisma/client";
@@ -235,9 +235,12 @@ function TooltipRow({
   textColor: string;
   formatter: Intl.NumberFormat;
 }) {
-  const formattingFn = useCallback((value: number) => {
-    return formatter.format(value);
-  }, [formatter])
+  const formattingFn = useCallback(
+    (value: number) => {
+      return formatter.format(value);
+    },
+    [formatter]
+  );
   return (
     <div className="flex items-center gap-2">
       <div className={cn("h-4 w-4 rounded-full", bgColor)} />

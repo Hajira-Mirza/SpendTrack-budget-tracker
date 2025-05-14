@@ -2,9 +2,6 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: hsl(var(--background));
-  color: hsl(var(--foreground));
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 @layer base {
@@ -41,13 +38,13 @@ body {
   }
 
   .dark {
-    --background: 0 0% 0%;
+    --background: 0 0% 100%;
     --foreground: 0 0% 98%;
 
-    --card: 240 10% 3.9%;
+    --card: 240 10% 3.100%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 240 10% 3.9%;
+    --popover: 240 10% 3.100%;
     --popover-foreground: 0 0% 98%;
 
     --primary: 0 0% 98%;

@@ -2,7 +2,7 @@
 
 import { GetCategoriesStatsResponseType } from "@/app/api/stats/categories/route";
 import SkeletonWrapper from "@/components/SkeletonWrapper";
-import { Card, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle } from "@/components/ui/Card";
 import { Progress } from "@/components/ui/progress";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { DateToUTCDate, GetFormatterForCurrency } from "@/lib/helpers";
@@ -98,16 +98,18 @@ function CategoriesCard({
                       <span className="flex items-center text-gray-400">
                         {item.categoryIcon} {item.category}
                         <span className="ml-2 text-xs text-muted-foreground">
-                            ({percentage.toFixed(0)}%)
+                          ({percentage.toFixed(0)}%)
                         </span>
                       </span>
                       <span className="text-sm text-gray-400">
                         {formatter.format(amount)}
                       </span>
                     </div>
-                    <Progress 
-                    value={percentage}
-                    indicator={type === "income" ? "bg-emerald-500" : "bg-rose-500"}
+                    <Progress
+                      value={percentage}
+                      indicator={
+                        type === "income" ? "bg-emerald-500" : "bg-rose-500"
+                      }
                     />
                   </div>
                 );

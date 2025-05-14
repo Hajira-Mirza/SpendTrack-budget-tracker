@@ -1,7 +1,7 @@
 "use client";
 import { GetBalanceStatsResponseType } from "@/app/api/stats/balance/route";
 import SkeletonWrapper from "@/components/SkeletonWrapper";
-import { Card } from "@/components/ui/card";
+import { Card } from "@/components/ui/Card";
 import { DateToUTCDate, GetFormatterForCurrency } from "@/lib/helpers";
 import { UserSettings } from "@prisma/client";
 import { useQuery } from "@tanstack/react-query";
@@ -89,18 +89,19 @@ function StatCard({
     [formatter]
   );
   return (
-    <Card className="flex h-24 w-full items-center gap-2 p-4">{icon}
-    <div className="flex flex-col items-start gap-0">
+    <Card className="flex h-24 w-full items-center gap-2 p-4">
+      {icon}
+      <div className="flex flex-col items-start gap-0">
         <p className="text-muted-foreground">{title}</p>
-        <CountUp 
-        preserveValue={false}
-        redraw={false}
-        end={value}
-        decimals={2}
-        formattingFn={formatFn}
-        className="text-2xl"
+        <CountUp
+          preserveValue={false}
+          redraw={false}
+          end={value}
+          decimals={2}
+          formattingFn={formatFn}
+          className="text-2xl"
         />
-    </div>
+      </div>
     </Card>
-  )
+  );
 }

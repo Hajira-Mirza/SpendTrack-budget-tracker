@@ -8,7 +8,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "@/components/ui/Card";
 import { TransactionType } from "@/lib/types";
 import { useQuery } from "@tanstack/react-query";
 import { PlusSquare, TrashIcon, TrendingDown, TrendingUp } from "lucide-react";
